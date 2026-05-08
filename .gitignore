@@ -1,0 +1,7 @@
+# Noctalia plugin runtime files
+*/runtime-config.json
+*/settings.json
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,22 @@
+{
+  "bar": {
+    "running": "Pusat Otomatis: berjalan",
+    "starting": "Pusat Otomatis: memulai...",
+    "disabled": "Pusat Otomatis: nonaktif",
+    "enable": "Aktifkan Pusat Otomatis",
+    "disable": "Nonaktifkan Pusat Otomatis",
+    "settings": "Pengaturan"
+  },
+  "settings": {
+    "enabled": "Aktifkan Pusat Otomatis",
+    "enabled-desc": "Pusatkan jendela yang difokuskan secara otomatis saat berpindah fokus",
+    "debounce": "Tunda respons: {value}ms",
+    "debounce-desc": "Penundaan sebelum pemusatan untuk mengurangi kedipan saat perubahan fokus cepat",
+    "status-running": "Daemon berjalan",
+    "status-error": "Kesalahan daemon — memulai ulang...",
+    "status-stopped": "Daemon berhenti",
+    "about-title": "Tentang",
+    "about-credit": "Dikembangkan oleh litfill",
+    "about-date": "Tanggal: {date}"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "niri-auto-center",
+  "name": "Auto-Center",
+  "version": "1.0.0",
+  "minNoctaliaVersion": "4.4.0",
+  "author": "litfill",
+  "license": "MIT",
+  "repository": "https://github.com/LitFill/noctalia-plugins",
+  "description": "Automatically centers the focused window on screen when switching focus in niri",
+  "tags": ["Bar", "Utility", "Niri"],
+
+  "entryPoints": {
+    "main": "Main.qml",
+    "barWidget": "BarWidget.qml",
+    "settings": "Settings.qml"
+  },
+
+  "dependencies": {
+    "plugins": []
+  },
+
+  "metadata": {
+    "defaultSettings": {
+      "enabled": true,
+      "debounceMs": 100
+    }
+  }
+}

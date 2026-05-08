@@ -1,0 +1,22 @@
+{
+  "bar": {
+    "running": "Auto-Center: running",
+    "starting": "Auto-Center: starting...",
+    "disabled": "Auto-Center: disabled",
+    "enable": "Enable Auto-Center",
+    "disable": "Disable Auto-Center",
+    "settings": "Settings"
+  },
+  "settings": {
+    "enabled": "Enable Auto-Center",
+    "enabled-desc": "Automatically center the focused window when switching focus",
+    "debounce": "Response delay: {value}ms",
+    "debounce-desc": "Delay before centering to reduce flicker during rapid focus changes",
+    "status-running": "Daemon running",
+    "status-error": "Daemon error — restarting...",
+    "status-stopped": "Daemon stopped",
+    "about-title": "About",
+    "about-credit": "Developed by litfill",
+    "about-date": "Date: {date}"
+  }
+}
