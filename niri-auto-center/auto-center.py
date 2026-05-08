@@ -34,7 +34,6 @@ _focused_layout_pos: tuple | None = None   # (col, row) layout position
 _debounce_timer: threading.Timer | None = None
 _lock = threading.Lock()
 
-
 # ─── Niri IPC ───
 def _extract_layout_pos(window: dict) -> tuple | None:
     """Extract (col, row) from a window's layout if available."""
@@ -45,7 +44,6 @@ def _extract_layout_pos(window: dict) -> tuple | None:
         if isinstance(pos, list) and len(pos) >= 2 and all(isinstance(v, (int, float)) for v in pos):
             result = (int(pos[0]), int(pos[1]))
     return result
-
 
 def niri_action(*args) -> None:
     """Run a niri msg action command."""
@@ -60,7 +58,6 @@ def niri_action(*args) -> None:
         log.warning("niri action %s timed out", args)
     except OSError as exc:
         log.error("niri action %s error: %s", args, exc)
-
 
 def get_focused_window_info() -> tuple[int | None, int | None, tuple | None]:
     """Get (window_id, workspace_id, layout_pos) of the currently focused window."""
@@ -84,13 +81,11 @@ def get_focused_window_info() -> tuple[int | None, int | None, tuple | None]:
         log.debug("failed to get focused window: %s", exc)
         return None, None, None
 
-
 # ─── Core Logic ───
 def center_focused() -> None:
     """Center the currently focused window."""
     log.debug("centering focused window")
     niri_action("center-window")
-
 
 def debounced_center() -> None:
     """Debounce before centering."""
@@ -101,7 +96,6 @@ def debounced_center() -> None:
             _debounce_timer.cancel()
         _debounce_timer = threading.Timer(DEBOUNCE_SECONDS, center_focused)
         _debounce_timer.start()
-
 
 # ─── Event Processing ───
 def _find_focused_in_event(event: dict) -> tuple[int | None, int | None, tuple | None]:
@@ -141,7 +135,6 @@ def _find_focused_in_event(event: dict) -> tuple[int | None, int | None, tuple |
                     break
 
     return found_id, found_ws, found_pos
-
 
 def should_center(event: dict) -> bool:
     """Determine if an event warrants centering.
@@ -191,7 +184,6 @@ def should_center(event: dict) -> bool:
             need_center = True
 
     return need_center
-
 
 def run_event_loop() -> None:
     """Connect to niri event stream and process events."""
@@ -245,7 +237,6 @@ def run_event_loop() -> None:
         except subprocess.TimeoutExpired:
             proc.kill()
 
-
 # ─── CLI ───
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments."""
@@ -265,7 +256,6 @@ def parse_args() -> argparse.Namespace:
         help="enable debug logging",
     )
     return parser.parse_args()
-
 
 # ─── Hot Reload ───
 def reload_config() -> None:
@@ -300,7 +290,6 @@ def reload_config() -> None:
     log.info("config reloaded (debounce=%gms)", DEBOUNCE_SECONDS * 1000)
 
     center_focused()
-
 
 # ─── Main ───
 def main() -> None:
@@ -342,7 +331,6 @@ def main() -> None:
         except Exception as exc:
             log.error("event loop crashed: %s, reconnecting in %gs", exc, RECONNECT_DELAY)
         time.sleep(RECONNECT_DELAY)
-
 
 if __name__ == "__main__":
     main()
