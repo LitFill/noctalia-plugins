@@ -291,6 +291,9 @@ def reload_config() -> None:
 
     center_focused()
 
+def ignore(*args) -> None:
+    _ = args
+
 # ─── Main ───
 def main() -> None:
     """Main entry point with reconnection loop."""
@@ -308,6 +311,7 @@ def main() -> None:
 
     # Handle SIGTERM for graceful shutdown
     def _shutdown(signum, frame):
+        ignore(signum, frame)
         t = _debounce_timer
         if t is not None:
             t.cancel()
@@ -316,6 +320,7 @@ def main() -> None:
 
     # Handle SIGUSR1 for hot config reload
     def _reload(signum, frame):
+        ignore(signum, frame)
         reload_config()
     signal.signal(signal.SIGUSR1, _reload)
 
